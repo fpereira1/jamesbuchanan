@@ -52,9 +52,9 @@
         <div class="block contact-max-width">
 
 <form action="https://api.formspree.com/pereira.filype@gmail.com" method="post" name="form1" id="form1"> 
-     <input name="name_r" type="text" class="required" id="name_r" placeholder="Name" autocapitalize="off" autocorrect="off" /> 
+     <input name="name" type="text" class="required" id="name_r" placeholder="Name" autocapitalize="off" autocorrect="off" /> 
      <input name="_replyto" type="email" class="required email" size="30" placeholder="Email" autocapitalize="off" autocorrect="off" /> 
-     <textarea name="comments_r" cols="25" rows="5" class="required" placeholder="Comments" autocapitalize="off" autocorrect="off"></textarea>
+     <textarea name="comments" cols="25" rows="5" class="required" placeholder="Comments" autocapitalize="off" autocorrect="off"></textarea>
      <input name="Submit" id="submit" type="submit" class="submit_go" value="Submit" />  
 </form>
 
@@ -81,27 +81,6 @@
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> 
 <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/validate/jquery.validate.js"></script> 
-
-<script> 
-$(document).ready(function() {
-	$("#form1").validate({
-		submitHandler: function() {
-			//submit the form
-			$.post("<?php echo $_SERVER[PHP_SELF]; ?>", //post
-				$("#form1").serialize(), 
-				function(data){
-				  //if message is sent
-				  if (data == 'Sent') {
-				    $("#message").fadeIn(); //show confirmation message
-				    $("#form1")[0].reset(); //reset fields
-				}
-				//
-			});
-			return false; //don't let the page refresh on submit.
-		}
-	}); //validate the form
-});
-</script> 
 
     <script>
       var navigation = responsiveNav("#nav", {
