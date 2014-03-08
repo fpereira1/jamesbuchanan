@@ -50,15 +50,14 @@
         <article class="block prose">
         <div class="slides-wrapper">
     		<div id="slides">
-      			<img src="img/example-slide-1.jpg" alt="#">
-      			<img src="img/example-slide-5.jpg" alt="#">
-      			<img src="img/example-slide-2.jpg" alt="#">
-      			<img src="img/example-slide-3.jpg" alt="#">
-      			<img src="img/example-slide-4.jpg" alt="#">
-      			
+            <img src="img/example-slide-1.jpg" id="slide-1" data-url="http://www.passionate.org.nz/" data-label="Passionate">
+            <img src="img/example-slide-2.jpg" id="slide-2" data-url="http://www.chipgroup.co.nz/" data-label="The Chip Group">
+            <img src="img/example-slide-3.jpg" id="slide-3" data-url="http://www.telecomwholesale.co.nz/" data-label="Telecom Wholesale">
+            <img src="img/example-slide-4.jpg" id="slide-4" data-url="http://www.responsivedesign.co.nz/" data-label="Responsive Design">
+      			<img src="img/example-slide-5.jpg" id="slide-5" data-url="http://www.anz.co.nz" data-label="ANZ">
     		</div>
   		</div>
-		<h2 class="text-center"><a href="http://www.passionate.org.nz">Passionate</a></h2> 
+		    <h2 class="text-center" id="slideLabel">&nbsp;</h2>
         </article>
     </div>
 
@@ -104,10 +103,27 @@
 
   <script>
     $(function() {
+
+      function updateSlideLabel(i) {
+        // slide element
+        s = $('#slide-'+ i);
+
+        $('#slideLabel').html(
+          $('<a />', {
+            href: s.data('url'),
+            html: s.data('label')
+          })
+        );
+      }
+
       $('#slides').slidesjs({
         width: 774,
         height: 468,
-        navigation: false
+        navigation: false,
+        callback: {
+          loaded: updateSlideLabel,
+          complete: updateSlideLabel,
+        }
       });
       
       $('body').scrollTop(1);
