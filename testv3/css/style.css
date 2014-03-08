@@ -563,7 +563,7 @@ margin-right:13px;
 }
       
 
-.form-input, input[type="text"], textarea{
+.form-input, input[type="text"], input[type="email"], textarea{
 width:100%;
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
